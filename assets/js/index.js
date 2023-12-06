@@ -6,16 +6,17 @@ window.onload = function () {
       }
     })
     .then((serverResponseConvertedInUsableData) => {
-      let cartArray = [];
       console.log(serverResponseConvertedInUsableData);
-      refreshLibrary(serverResponseConvertedInUsableData, cartArray);
+      refreshLibrary(serverResponseConvertedInUsableData);
     });
 };
-let refreshLibrary = function (arrayOfBook, cartArray) {
+
+let refreshLibrary = function (arrayOfBook) {
   showBookInLibrary(arrayOfBook);
-  addEventDeleteBtn(arrayOfBook, cartArray);
-  addEventCartBtn(arrayOfBook, cartArray);
+  addEventDeleteBtn(arrayOfBook);
+  addEventCartBtn(arrayOfBook);
 };
+let cartArray = [];
 
 let showBookInLibrary = (arrayOfBook) => {
   let bookContainer = document.getElementById("bookContainer");
@@ -56,19 +57,19 @@ let showBookInCart = () => {
   cartContainer.innerHTML += `total = ${parseFloat(total.toFixed(2))}`;
 };
 
-let addEventDeleteBtn = function (arrayOfBook, cartArray) {
+let addEventDeleteBtn = function (arrayOfBook) {
   let deleteButtonNode = document.querySelectorAll(".deleteBtn");
   deleteButtonNode.forEach((button, index) => {
     button.addEventListener("click", (event) => {
       event.currentTarget.closest(".cardContainer").remove();
       console.log(arrayOfBook.splice(index, 1));
       console.log(arrayOfBook);
-      refreshLibrary(arrayOfBook, cartArray);
+      refreshLibrary(arrayOfBook);
     });
   });
 };
 
-let addEventCartBtn = function (arrayOfBook, cartArray) {
+let addEventCartBtn = function (arrayOfBook) {
   let addToCartButtonNode = document.querySelectorAll(".addToCartBtn");
   addToCartButtonNode.forEach((button, index) => {
     button.addEventListener("click", (event) => {
