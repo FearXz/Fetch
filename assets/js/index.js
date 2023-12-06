@@ -13,15 +13,13 @@ window.onload = function () {
 };
 let refreshLibrary = function (arrayOfBook, cartArray) {
   showBookInLibrary(arrayOfBook);
-  addEventDeleteBtn(arrayOfBook);
+  addEventDeleteBtn(arrayOfBook, cartArray);
   addEventCartBtn(arrayOfBook, cartArray);
 };
-/*  let refreshCart = function (arrayOfBook, cartArray) {
-  addEventCartBtn(arrayOfBook, cartArray);
-};  */
+
 let showBookInLibrary = (arrayOfBook) => {
   let bookContainer = document.getElementById("bookContainer");
-
+  bookContainer.innerHTML = "";
   arrayOfBook.forEach((bookObj) => {
     bookContainer.innerHTML += `
     <div class="col-3 cardContainer">
@@ -58,14 +56,14 @@ let showBookInCart = () => {
   cartContainer.innerHTML += `total = ${parseFloat(total.toFixed(2))}`;
 };
 
-let addEventDeleteBtn = function (arrayOfBook) {
+let addEventDeleteBtn = function (arrayOfBook, cartArray) {
   let deleteButtonNode = document.querySelectorAll(".deleteBtn");
   deleteButtonNode.forEach((button, index) => {
     button.addEventListener("click", (event) => {
       event.currentTarget.closest(".cardContainer").remove();
       console.log(arrayOfBook.splice(index, 1));
       console.log(arrayOfBook);
-      refreshLibrary(arrayOfBook);
+      refreshLibrary(arrayOfBook, cartArray);
     });
   });
 };
