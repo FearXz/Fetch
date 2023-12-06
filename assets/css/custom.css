@@ -1,0 +1,21 @@
+#cart img {
+  max-height: 100px;
+}
+.cardContainer img {
+  max-height: 300px;
+}
+.dropdown-menu[data-bs-popper] {
+  top: 110% !important;
+  left: -250px !important;
+}
+.dropdown-menu {
+  width: 330px;
+}
+.dropdown-menu p {
+  white-space: pre-line;
+  overflow: hidden;
+  width: 200px;
+}
+.dropdown-menu img {
+  height: 100px;
+}
